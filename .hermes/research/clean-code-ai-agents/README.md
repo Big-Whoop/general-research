@@ -11,6 +11,7 @@
 | File | Axis / sub-question | One-line claim summary | Tier scheme | Status |
 |---|---|---|---|---|
 | `REPORT.md` | Synthesis (all axes) | Clean code is MORE useful for agents (reason shifted to the context window); most principles AMPLIFIED, KISS/YAGNI INVERTED, readability SPLIT; "locally clean but globally incoherent" is research-backed; recommend the full stack (rules file + mechanical gates + clean codebase). | V/P/S | CURRENT |
+| `REPORT_DE.md` | Synthesis (all axes) — German 1:1 translation of `REPORT.md` | 1:1-Übersetzung des Hauptberichts ins Deutsche (gleiche Struktur, Zitate und Tiers). | V/P/S | CURRENT |
 | `principles/lane1.md` | Facet A — the canonical 10 principles + how each works | No single source lists exactly "the 10"; it is a cross-source synthesis (Clean Code 2008 Part I + DRY/KISS/YAGNI + SOLID); KISS/YAGNI/SOLID are not Clean Code chapters. | V/P/S | CURRENT |
 | `papers/lane2.md` | Facet B — research papers on clean code & LLM code quality | SWE-CI: clean/extensible code is rewarded over evolution but invisible on snapshot benchmarks; LLM code is "superficially clean but intrinsically complex"; agent-authored tests are mostly observational. | V/P/S | CURRENT |
 | `papers/lane2-2.md` | Facet B (wave-2) — is "locally clean but globally incoherent" research-backed? | YES — Modular Mirage / architectural rot (2605.02741), Architectural Erosion / Hallucinated Coupling (2512.04273), growing LLM-technical-debt literature (2606.14796). | V/P/S | CURRENT |
