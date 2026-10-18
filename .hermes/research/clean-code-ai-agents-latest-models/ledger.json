@@ -252,6 +252,324 @@
       "url": "https://shopify.engineering/building-an-agentic-harness-that-outlasts-the-model",
       "title": "",
       "accessed": "2026-10-18"
+    },
+    {
+      "id": 43,
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+      "title": "Anthropic: Introducing Claude Fable 5.1 and Claude Mythos 5.1 (2026-09-01)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 44,
+      "url": "https://www.anthropic.com/claude/fable",
+      "title": "Anthropic: Claude Fable product page",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 45,
+      "url": "https://www.anthropic.com/claude-fable-5-1-mythos-5-1-system-card",
+      "title": "Fable 5.1 & Mythos 5.1 system card (2026-09-01)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 46,
+      "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+      "title": "Fable 5.1 model docs (pricing, model IDs, specs)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 47,
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
+      "title": "Fable 5.1 prompting guide",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 48,
+      "url": "https://platform.claude.com/docs/en/release-notes/api",
+      "title": "Claude API release notes (Sep 1 2026 entry)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 49,
+      "url": "https://arxiv.org/abs/2609.34262",
+      "title": "Maintaining Benchmarks Against Increasingly Capable Agents (unearned passes)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 50,
+      "url": "https://arxiv.org/abs/2609.30217",
+      "title": "Instrumental Monitor Evasion Emerges Under Ordinary Task Pressure (EvasionBench)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 51,
+      "url": "https://arxiv.org/abs/2610.09944",
+      "title": "AgentTime: Can Agents Estimate and Control Their Own Runtime?",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 52,
+      "url": "https://arxiv.org/abs/2609.38469",
+      "title": "The Backdrop Exposes What the World Around an Agent Costs It (BACKDROP)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 53,
+      "url": "https://arxiv.org/abs/2609.15494",
+      "title": "The Troy Moment: How LLM Agents Adjudicate the Decision Point Under Impossible Tasks",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 54,
+      "url": "https://arxiv.org/abs/2609.36777",
+      "title": "Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D Scenes",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 55,
+      "url": "https://www.coderabbit.ai/blog/fable-5-1-model-review",
+      "title": "CodeRabbit: Fable 5.1 model review eval",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 56,
+      "url": "https://www.huntress.com/blog/claude-fable-api-recall",
+      "title": "Huntress: Claude Fable 5.1 API recall (controlled Rails eval)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 57,
+      "url": "https://devin.ai/blog/fable-5-1",
+      "title": "Cognition/Devin: Fable 5.1 on FrontierCode",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 58,
+      "url": "https://every.to/vibe-check/fable-5-1-vibe-check",
+      "title": "Every: Fable 5.1 vibe check (week-long hands-on)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 59,
+      "url": "https://artificialanalysis.ai/articles/claude-fable-5-1",
+      "title": "Artificial Analysis: Claude Fable 5.1",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 60,
+      "url": "https://aistack.imec-int.com/blog/astra-vs-fable-update",
+      "title": "aistack: Astra vs Fable (64 long-horizon SWE-bench Pro tasks)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 61,
+      "url": "https://gist.github.com/safzanpirani/6c6c9d811dc27f16d7b0f59816596a88",
+      "title": "Claude Code 2.1.257 binary analysis (scope prompt bundle)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 62,
+      "url": "https://github.com/anthropics/claude-code/issues/91345",
+      "title": "claude-code#91345: Fable 5.1 version gate",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 63,
+      "url": "https://cursor.com/docs/models/claude-fable-5-1",
+      "title": "Cursor: Fable 5.1 model page",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 64,
+      "url": "https://github.blog/changelog/2026-09-01-claude-fable-5-1-generally-available-in-github-copilot/",
+      "title": "GitHub Copilot changelog: Fable 5.1 GA",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 65,
+      "url": "https://news.ycombinator.com/item?id=49525378",
+      "title": "HN: Claude Fable 5.1 launch thread",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 66,
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1x3lzc0/",
+      "title": "r/ClaudeAI: Does anyone still use Fable 5.1 these days?",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 67,
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1wymhwx/",
+      "title": "r/ClaudeAI: How good is Fable 5.1 at real software engineering?",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 68,
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1wv2cp2/",
+      "title": "r/ClaudeAI: Anyone using Fable 5.1 still?",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 69,
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1w4qziv/",
+      "title": "r/ClaudeCode: Cities Skylines in three.js with Fable 5.1",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 70,
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1wanm8p/",
+      "title": "r/ClaudeAI: Fable 5.1 vs GPT-6 Astra for 2D sprites",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 71,
+      "url": "https://thomas-wiegold.com/blog/claude-fable-5-1-review/",
+      "title": "Thomas Wiegold: Fable 5.1 hands-on review",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 72,
+      "url": "https://cruxdigits.nl/blog/claude-fable-5-1-pricing-effort-levels/",
+      "title": "Crux Digits: Fable 5.1 pricing and effort levels",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 73,
+      "url": "https://local-ai-zone.github.io/blog/claude-fable-5-1-technical-breakdown.html",
+      "title": "Local AI Zone: Fable 5.1 technical breakdown",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 74,
+      "url": "https://www.datacamp.com/blog/claude-fable-5-1",
+      "title": "DataCamp: Claude Fable 5.1 (partner long-run reports)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 75,
+      "url": "https://news.ycombinator.com/item?id=50019464",
+      "title": "HN: Show HN: K10s (3-day 50k-LoC Go app)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 76,
+      "url": "https://news.ycombinator.com/item?id=50057584",
+      "title": "HN: QGIS thread (brownfield clean features)",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 77,
+      "url": "https://arxiv.org/abs/2610.14766",
+      "title": "Last Secure Code Benchmark: Is the Code You Vibe Secure?",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 78,
+      "url": "https://www.sonarsource.com/blog/claude-fable-5-built-a-java-module-in-13-minutes/",
+      "title": "SonarSource: Fable 5 built a Java module in 13 minutes",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 79,
+      "url": "https://www.vals.ai/models/anthropic_claude-fable-5-1",
+      "title": "Vals AI: Claude Fable 5.1 model page",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 80,
+      "url": "https://snorkel.ai/blog/fable-5-1-vs-opus-5-coding-benchmark/",
+      "title": "Snorkel AI: Fable 5.1 vs Opus 5 coding benchmark",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 81,
+      "url": "https://emergent.sh/learn/claude-fable-5-1-benchmarks",
+      "title": "emergent.sh: Fable 5.1 independent benchmark guide",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 82,
+      "url": "https://forum.cursor.com/t/claude-fable-5-1-out-now/170246",
+      "title": "Cursor forum: Fable 5.1 out now",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 83,
+      "url": "https://news.ycombinator.com/item?id=49603520",
+      "title": "HN: Claude Code fable 5.1 is seriously flawed",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 84,
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1wwh0s7/",
+      "title": "r/ClaudeCode: Fable 5.1 has become dumb",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 85,
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1x0vggl/",
+      "title": "r/ClaudeCode: Fable 5.1 still the goat for planning",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 86,
+      "url": "https://talkchess.com/viewtopic.php?t=86707",
+      "title": "talkchess: Fable 5.1 3277-elo UCI engine in 24 hrs",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 87,
+      "url": "https://news.ycombinator.com/item?id=49578922",
+      "title": "HN: Ask HN: How are you monitoring Chain of Thought in Fable 5.1?",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 88,
+      "url": "https://news.ycombinator.com/item?id=50041030",
+      "title": "HN: 500B tokens later: Letting AI agents decompile a first-person shooter",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 89,
+      "url": "https://news.ycombinator.com/item?id=50065361",
+      "title": "HN: I turned my unused Kindle into a photo frame with GPT-6 Astra",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 90,
+      "url": "https://www.reddit.com/r/vibecoding/comments/1w73tli/",
+      "title": "r/vibecoding: Fable 5.1 is crazy — started this 8 hours ago",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 91,
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1w5ftqe/",
+      "title": "r/ClaudeAI: Fable 5.1 made a Minecraft mod for 20$",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 92,
+      "url": "https://github.com/anthropics/claude-code/issues/92499",
+      "title": "claude-code#92499: Fable 5.1 excessive token consumption",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 93,
+      "url": "https://github.com/anthropics/claude-code/issues/92184",
+      "title": "claude-code#92184: silent Opus 4.8 downgrade",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 94,
+      "url": "https://github.com/anthropics/claude-code/issues/100780",
+      "title": "claude-code#100780: reasoning_extraction false positives",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 95,
+      "url": "https://github.com/anthropics/claude-code/issues/99227",
+      "title": "claude-code#99227: Fable 5.1 Extra High ultra runaway",
+      "accessed": "2026-10-18"
     }
   ]
 }
