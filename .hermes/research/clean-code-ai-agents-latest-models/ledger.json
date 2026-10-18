@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 2,
+      "url": "https://developers.openai.com/api/docs/changelog.md",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 3,
+      "url": "https://ai.google.dev/gemini-api/docs/changelog",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 4,
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 5,
+      "url": "https://developers.openai.com/api/docs/guides/latest-model.md",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 6,
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 7,
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 8,
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 9,
+      "url": "https://learn.chatgpt.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 10,
+      "url": "https://learn.chatgpt.com/blog/maintaining-software-with-the-gpt-6-family",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 11,
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 12,
+      "url": "https://code.claude.com/docs/en/changelog",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 13,
+      "url": "https://arxiv.org/abs/2610.14768",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 14,
+      "url": "https://arxiv.org/abs/2609.35357",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 15,
+      "url": "https://arxiv.org/abs/2609.36730",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 16,
+      "url": "https://arxiv.org/abs/2610.06193",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 17,
+      "url": "https://arxiv.org/abs/2607.18161",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 18,
+      "url": "https://arxiv.org/abs/2608.21747",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 19,
+      "url": "https://arxiv.org/abs/2608.25241",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 20,
+      "url": "https://arxiv.org/abs/2606.21804",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 21,
+      "url": "https://arxiv.org/html/2607.24882",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 22,
+      "url": "https://arxiv.org/html/2607.09691v1",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 23,
+      "url": "https://martinfowler.com/articles/exploring-gen-ai/refactoring-economic-benefit.html",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 24,
+      "url": "https://codescene.com/blog/case-study-refactoring-at-scale-with-agents",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 25,
+      "url": "https://www.gitclear.com/the_ai_code_quality_maintainability_gap",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 26,
+      "url": "https://www.anthropic.com/engineering/redesigning-source-control",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 27,
+      "url": "https://martinfowler.com/articles/exploring-gen-ai/tdd-in-the-agent-loop.html",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 28,
+      "url": "https://martinfowler.com/articles/are-harnesses-worth-the-cost.html",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 29,
+      "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 30,
+      "url": "https://paddo.dev/blog/opus-5-5-vs-gpt-6-sol",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 31,
+      "url": "https://news.ycombinator.com/item?id=49946567",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 32,
+      "url": "https://maevyn.codes/decoherence",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 33,
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1v9zg50/why_opus_5_and_gpt_56_over_engineer_and_are",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 34,
+      "url": "https://alignment.anthropic.com/2026/reward-seeker",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 35,
+      "url": "https://www.sonarsource.com/blog/sonarqube-server-2026-5-lta",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 36,
+      "url": "https://arxiv.org/abs/2606.19613",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 37,
+      "url": "https://dev.to/evbermudez/the-model-didnt-get-dumber-my-agent-skills-got-stale-8cm",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 38,
+      "url": "https://www.reddit.com/r/ExperiencedDevs/comments/1wu1tzt/giving_your_codebase_entirely_to_the_ai",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 39,
+      "url": "https://arxiv.org/abs/2608.18645",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 40,
+      "url": "https://arxiv.org/abs/2609.35918",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 41,
+      "url": "https://www.infoq.com/articles/agentic-fitness-functions-evolutionary-architecture",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 42,
+      "url": "https://shopify.engineering/building-an-agentic-harness-that-outlasts-the-model",
+      "title": "",
+      "accessed": "2026-10-18"
+    }
+  ]
+}
