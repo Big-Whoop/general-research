@@ -20,3 +20,16 @@ card → worktree → branch → PR → reviewer merge
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## skills/
+
+Shareable Hermes skills maintained in this repo (source of truth for versioning; the live copies live under `/opt/data/skills`). Each `SKILL.md` carries its own `version:` — bump it on every change and sync both directions deliberately.
+
+| Skill | Purpose |
+|---|---|
+| `deep-research` | Multi-round subagent research into an options report |
+| `decision-narrowing` | Narrow a research corpus to one path (user-driven loop) |
+| `feature-spec-qa` | Settle a feature design one question per turn, no corpus |
+| `decision-topic-execution` | Build/board work under a closed decision topic |
+| `hermes-kanban-workers` | Kanban campaigns: waves, feature branches, review lane |
+| `before-reading-source` | Docs-first gate before opening foreign source code |
