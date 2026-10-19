@@ -33,3 +33,7 @@ Shareable Hermes skills maintained in this repo (source of truth for versioning;
 | `decision-topic-execution` | Build/board work under a closed decision topic |
 | `hermes-kanban-workers` | Kanban campaigns: waves, feature branches, review lane |
 | `before-reading-source` | Docs-first gate before opening foreign source code |
+| `subagent-fanout` | Fan out N items via delegate_task with capped output |
+| `merge-reconciler` | Neutral resolution of agent merge conflicts |
+| `plan` | Write a markdown plan, no execution (adapted from obra/superpowers, MIT) |
+| `reddit-reading` | Read Reddit without a browser (from Hermes optional-skills by Teknium, MIT; local changes in `scripts/reddit.py`) |
