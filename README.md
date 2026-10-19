@@ -36,4 +36,3 @@ Shareable Hermes skills maintained in this repo (source of truth for versioning;
 | `subagent-fanout` | Fan out N items via delegate_task with capped output |
 | `merge-reconciler` | Neutral resolution of agent merge conflicts |
 | `plan` | Write a markdown plan, no execution (adapted from obra/superpowers, MIT) |
-| `reddit-reading` | Read Reddit without a browser (from Hermes optional-skills by Teknium, MIT; local changes in `scripts/reddit.py`) |
