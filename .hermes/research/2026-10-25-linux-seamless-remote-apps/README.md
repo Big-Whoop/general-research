@@ -117,3 +117,11 @@ No OPEN rows remain after round 2 → no round-3 gate question required (rule: a
 | menu-integration/lane5-r2.md | SQ6 | verified ssh-X .desktop example (unix.SE 805954); waypipe .desktop generators (B1/B2); xpra shipped entry + foreground caveat; x2go official menu + assembled wrapper gap; KDE has no remote-app menu feature | Verified/Plausible/Speculative | complete, read whole |
 | wslg-diy/lane6-r2.md | SQ7 | negative hardened: grd/krdp full-session only; xrdp RAIL frozen; jacobstoner DIY no-seamless; wsland Windows-only; wlroots RDP removed; IronRDP = client components | Verified/Plausible/Speculative | complete, read whole |
 | REPORT.md | synthesis | options matrix, ranked recommendation, DE deliverable | inherits lane tiers | final |
+
+## On-target validation (2026-10-25, live test by user on CachyOS KDE client -> Ubuntu VM 'agents.vm')
+
+Setup that works: client `waypipe --no-gpu [--xwls] ssh peter@agents.vm.homelab.fahsel.ch <app>` (server waypipe = Rust 0.11.x per mainloop.rs/dmabuf.rs error signatures).
+
+1. CONFIRMED (was Verified-by-docs, now on-target): headless server without /dev/dri kills the remote waypipe dmabuf init (`dmabuf.rs Failed to get physical devices: ERROR_INITIALIZATION_FAILED`, then `we don't have any display`) -> `-n/--no-gpu` is the required and sufficient fix (official flag semantics: "Block protocols like wayland-drm and linux-dmabuf which require access to e.g. render nodes").
+2. NEW pitfall, on-target Verified: **GTK3 apps need explicit `GDK_BACKEND=wayland` when waypipe runs with `--xwls`** — with DISPLAY set (xwayland-satellite), GTK3's autodetect prefers X11 and gtk::init fails inside Tauri/tao apps (BoolError "Failed to initialize GTK"); GTK_A11Y=none, GDK_BACKEND=x11 and --appimage-extract-and-run did NOT help, `env GDK_BACKEND=wayland` did. Qt/firefox apps pick Wayland via XDG_SESSION_TYPE and were unaffected. Persist via fish `set -Ux GDK_BACKEND wayland` or env in the .desktop Exec.
+3. fork/exec child apps under waypipe inherit the fake compositor (WAYLAND_DISPLAY=wayland-<rand>, socket in server XDG_RUNTIME_DIR=/run/user/1000) — child-window follow-up works for direct spawns; portal/D-Bus-activated starts remain the known gap (see lane1/lane5).
