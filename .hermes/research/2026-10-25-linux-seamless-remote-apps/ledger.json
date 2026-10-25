@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://man.openbsd.org/sshd_config",
+      "title": "OpenBSD sshd_config(5)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 2,
+      "url": "https://man.openbsd.org/ssh_config",
+      "title": "OpenBSD ssh_config(5)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 3,
+      "url": "https://wiki.archlinux.org/title/OpenSSH",
+      "title": "ArchWiki OpenSSH X11 forwarding",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 4,
+      "url": "https://www.tauceti.blog/posts/ssh-x-vs-xpra-vs-waypipe-remote-display-comparison-single-window",
+      "title": "TauCeti: ssh -X vs xpra vs waypipe",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 5,
+      "url": "https://gitlab.freedesktop.org/mstoeckl/waypipe",
+      "title": "waypipe upstream README",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 6,
+      "url": "https://manpages.debian.org/unstable/waypipe/waypipe.1.en.html",
+      "title": "waypipe(1) man page",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 7,
+      "url": "https://launchpad.net/ubuntu/noble/+package/waypipe",
+      "title": "Launchpad noble waypipe 0.8.6",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 8,
+      "url": "https://wiki.archlinux.org/title/PulseAudio",
+      "title": "ArchWiki PulseAudio network sharing",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 9,
+      "url": "https://www.virtualgl.org/vgldoc/2_1_3",
+      "title": "VirtualGL User's Guide",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 10,
+      "url": "https://unix.stackexchange.com/questions/805954/how-to-start-a-remote-x11-application-via-ssh-with-one-click-on-an-icon",
+      "title": "unix.SE: one-click remote X11 app .desktop",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 11,
+      "url": "https://raw.githubusercontent.com/Xpra-org/xpra/master/docs/Usage/Seamless.md",
+      "title": "xpra Seamless.md",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 12,
+      "url": "https://github.com/Xpra-org/xpra/wiki/Platforms",
+      "title": "xpra Platforms wiki",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 13,
+      "url": "https://raw.githubusercontent.com/Xpra-org/xpra/master/docs/Features/Clipboard.md",
+      "title": "xpra Clipboard.md",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 14,
+      "url": "https://xpra-org.github.io/xpra/Download/Linux.html",
+      "title": "xpra Linux download docs",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 15,
+      "url": "https://github.com/Xpra-org/xpra/wiki/Distribution-Packages",
+      "title": "xpra Distribution-Packages",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 16,
+      "url": "https://github.com/Xpra-org/xpra",
+      "title": "xpra repo (liveness probe)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 17,
+      "url": "https://wiki.x2go.org/doku.php/wiki:advanced:published-applications",
+      "title": "X2Go Published Applications wiki",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 18,
+      "url": "https://manpages.debian.org/bookworm/x2goclient/x2goclient.1.en.html",
+      "title": "x2goclient(1) man page",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 19,
+      "url": "https://bugs.x2go.org/cgi-bin/bugreport.cgi?bug=1414",
+      "title": "X2Go bug 1414 Wayland crash",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 20,
+      "url": "https://wiki.archlinux.org/title/X2Go",
+      "title": "ArchWiki X2Go",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 21,
+      "url": "https://launchpad.net/ubuntu/noble/+source/x2goserver",
+      "title": "Launchpad noble x2goserver",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 22,
+      "url": "https://github.com/neutrinolabs/xrdp/wiki/RAIL-support-in-xrdp",
+      "title": "xrdp RAIL support wiki",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 23,
+      "url": "https://github.com/neutrinolabs/xrdp/discussions/3071",
+      "title": "xrdp discussion 3071 RemoteApp guidance",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 24,
+      "url": "https://github.com/FreeRDP/FreeRDP/wiki/RemoteApp",
+      "title": "FreeRDP RemoteApp wiki",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 25,
+      "url": "https://gitlab.com/Remmina/Remmina/-/issues/2578",
+      "title": "Remmina issue 2578 RemoteApp",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 26,
+      "url": "https://github.com/microsoft/wslg",
+      "title": "WSLG README (architecture)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 27,
+      "url": "http://web.archive.org/web/20260519182604/https://blog.jacobstoner.com/wayweston-rdp",
+      "title": "jacobstoner WSLg-DIY (Wayback)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 28,
+      "url": "https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/raw/main/README.md",
+      "title": "GNOME Remote Desktop README",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 29,
+      "url": "https://raw.githubusercontent.com/KDE/krdp/master/README.md",
+      "title": "KDE krdp README",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 30,
+      "url": "https://github.com/Devolutions/IronRDP/pull/2200",
+      "title": "IronRDP RAIL client PR 2200",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 31,
+      "url": "https://github.com/BeatLink/WaypipeDesktop",
+      "title": "WaypipeDesktop (per-app .desktop generator)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 32,
+      "url": "https://pypi.org/project/remote-app-launcher",
+      "title": "remote-app-launcher (waypipe gtk-launch)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 33,
+      "url": "https://develop.kde.org/docs/features/desktop-file",
+      "title": "KDE desktop-file docs",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 34,
+      "url": "https://github.com/qq1038765585/wsland",
+      "title": "wsland (WSL-only wslg-like)",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 35,
+      "url": "https://wiki.archlinux.org/title/Xpra",
+      "title": "ArchWiki Xpra",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 36,
+      "url": "https://discuss.kde.org/t/file-picker-dialog-opens-on-wrong-remote-screen-when-running-applications-via-waypipe/41160",
+      "title": "KDE discuss: waypipe portal file-picker on server",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 37,
+      "url": "https://raw.githubusercontent.com/Xpra-org/xpra/master/docs/Features/Audio.md",
+      "title": "xpra Audio.md",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 38,
+      "url": "https://raw.githubusercontent.com/Xpra-org/xpra/master/docs/Usage/OpenGL.md",
+      "title": "xpra OpenGL.md",
+      "accessed": "2026-10-25"
+    },
+    {
+      "id": 39,
+      "url": "https://github.com/FreeRDP/FreeRDP/discussions/10586",
+      "title": "FreeRDP maintainer: Linux RemoteApp server 'currently no'",
+      "accessed": "2026-10-25"
+    }
+  ]
+}
