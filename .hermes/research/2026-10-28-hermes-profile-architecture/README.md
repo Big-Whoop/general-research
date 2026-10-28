@@ -74,12 +74,19 @@ Round 1: 5 lanes dispatched 2026-10-28 (docs×4 + community×1) — all complete
 status lines, and "Searched, found nothing" sections.
 Round 2: **not needed** — Step-2b audit found no OPEN/PARTIAL row; stop rule satisfied.
 
-## Local addendum (orchestrator probe, post-lane, 2026-10-28)
-- s6 services in the pod: gateway-default, gateway-worker, gateway-reviewer, and one gateway per
-  crew-* profile (8 gateway processes total) — i.e. one-gateway-per-profile inside a single
-  container, alongside `gateway.multiplex_profiles: true`. Upstream position: multiplexed host
-  gateway is the supported container topology; per-profile gateways are a refused/temporary-shim
-  topology (docs bestpractice L2-10) and a documented single-container pitfall (community
-  lane5 F28, issue #88521). Crew profiles carry own slack platform sections; worker/reviewer
-  gateways are idle (no platforms).
-- crew-* configs have no `gateway.standalone` key; kanban.default_assignee=worker present in crew configs.
+## Local addendum (orchestrator probe, post-lane, 2026-10-28; KORRIGIERT nach Detailprüfung)
+- Ursprünglicher Verdacht „8 Gateway-Prozesse im Pod" war auf Prozessebene falsch. Verifiziert:
+  das Base-Image registriert pro Profil einen `gateway-<profile>`-s6-Slot beim Boot
+  (`02-reconcile-profiles` → `container_boot.reconcile_profile_gateways`, docker/stage2-hook.sh);
+  Autostart nur bei letztem Zustand `running` in `gateway_state.json`. Auf Prozessebene läuft
+  genau EIN Gateway (`gateway run --replace`, pid 380), dessen `served_profiles` bereits alle
+  6 benannten Profile abdeckt (Telegram + api_server connected). `gateway.lock` der benannten
+  Profile zeigt auf den lebenden pid 380 (Serve-Eigentümerschaft) → keine Stale-Locks, behalten.
+- Normalisiert am 2026-10-28: `gateway_state.json = {"gateway_state":"stopped","desired_state":"stopped"}`
+  in worker, reviewer, crew-coordinator, crew-worker, crew-verifier, crew-content — der Reconciler
+  hält die Slots damit dauerhaft down. Verzögerte Verifikation: ps/`s6-svstat` nach dem nächsten
+  regulären Pod-Neustart (s6-svstat fehlt im Image; ps ist der Beweis).
+- Crew-Plugin-Bedarfsprüfung: Dispatcher-Check läuft gegen `base_home()` (Host-Gateway),
+  `hermes gateway install` ist nur Hint-Text; Chat-Plattformen aus (`slack.enabled: false`),
+  `--proofs-deliver` local, kein per-Profil-Cron. Keine Abhängigkeit von Profil-Gateways.
+- crew-* configs haben keinen `gateway.standalone`-Key; kanban.default_assignee=worker auch in crew configs.

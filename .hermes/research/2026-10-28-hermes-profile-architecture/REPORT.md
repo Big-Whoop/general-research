@@ -21,11 +21,11 @@ Alle Belege mit Zitaten: `lane1–5.md` in diesem Verzeichnis.
    bewusst mit **Delegation, `/personality`, Cron + `cron.model`** statt mit neuen
    Profilen (Verified, L2-8, L2-23).
 3. **Für uns ist der Hebel nicht „mehr Profile", sondern saubere Rollen + Ausstattung.**
-   worker/reviewer/crew-* existieren bereits korrekt als getrennte Homes. Der eigentliche
-   Befund der lokalen Inventur: **im Pod laufen 8 Gateway-Prozesse (einer pro Profil)
-   neben dem Multiplexer** — eine Topologie, die Upstream nicht mehr vorsieht und die als
-   Single-Container-Pitfall dokumentiert ist (L2-10; Issue #88521). Das zu bereinigen ist
-   wertvoller als jedes neue Profil.
+   worker/reviewer/crew-* existieren bereits korrekt als getrennte Homes. Die lokale Inventur
+   vermutete zunächst „8 Gateway-Prozesse im Pod" — nach Detailprüfung korrigiert (siehe §4.2):
+   das Base-Image registriert pro Profil einen s6-Slot (Upstream-Design), alle benannten sind
+   down, und genau ein Host-Multiplexer-Gateway bedient bereits alle 7 Profile. Offen blieb nur
+   die persistente Desired-State-Normalisierung — 2026-10-28 gesetzt.
 4. **Ausstattung folgt dokumentierten Mustern:** headlose Worker ohne Chat-Kanäle,
    `kanban`-Toolset explizit (nicht über `all`), Billig-Modell per `model.default`,
    Skills minimal (`--no-skills`, Curator, per-Plattform-Skills), Cron-Agent mit eigenem
@@ -106,20 +106,28 @@ Slack-Plattformen bei coordinator/worker/verifier)
 - Achtung Token-Hygiene: ein Bot-Token gehört an genau ein Profil; Klone transportieren
   keine Channels — Slack-Tokens bleiben 1:1 (Verified, L1-F27/F28).
 
-### 4.2 Dringendster Fix (lokaler Befund, vor jedem neuen Profil)
+### 4.2 Gateway-Topologie: Korrektur + Ist-Stand (lokaler Befund, 2026-10-28 nachgeprüft)
 
-`s6`-Serviceliste im Pod: `gateway-default`, `gateway-worker`, `gateway-reviewer`,
-`gateway-crew-{coordinator,worker,verifier,content}` — **8 Gateways in einem Container**,
-obwohl `gateway.multiplex_profiles: true` gesetzt ist. Upstream-Position: der multiplexte
-Host-Gateway ist die unterstützte Container-Topologie; per-Profil-Gateways werden bei
-`gateway start` verweigert und `gateway.standalone: true` heißt wörtlich *„Do not build
-new setups on it"* (Verified, L2-10/11). Community-Pitfall der exakt diesen Modus
-beschreibt: Token-/Port-Kampf und SIGTERM-Kanibalen, die Cron-Läufe töten (Issue #88521,
-Plausible). Empfehlung: Im `custom-hermes-suite`-Image nur das Host-Gateway supervisen;
-die Slack-Adapter der crew-*Profile werden dann vom Multiplexer mit deren eigenen
-Credentials bedient (per-profile adapters/secrets sind unter Multiplexing vorgesehen,
-Verified L1-F20). Gegenprüfen: ob `gateway-crew-*`-Locks auf aktive eigene Gateways
-hinweisen (Doppel-Adapter → geparkte Duplicate-Adapter wären das Symptom).
+Die ursprüngliche Behauptung — „8 Gateway-Prozesse laufen im Pod" — war auf Prozessebene
+**falsch** und wird hiermit korrigiert. Verifizierter Stand:
+- Das offizielle Base-Image registriert bei jedem Boot pro Profil einen `gateway-<profile>`-s6-Slot
+  (`cont-init.d/02-reconcile-profiles` → `container_boot.reconcile_profile_gateways`,
+  `docker/stage2-hook.sh`) und startet ihn nur automatisch, wenn `gateway_state.json` des Profils
+  zuletzt `running` stand. Registrierung ≠ laufender Prozess; das ist Upstream-Design.
+- Prozessebene: genau **ein** Gateway (`hermes gateway run --replace`, pid 380). Der Host-Gateway
+  meldet `served_profiles` = default + alle 6 benannten Profile; Telegram + api_server `connected`.
+- Die `gateway.lock`-Dateien der benannten Profile referenzieren den **lebenden** pid 380
+  (Serve-Eigentümerschaft / Token-Kampf-Schutz des Multiplexers) — keine Stale-Artefakte, bleiben.
+- Verursacher der Slots: Base-Reconciler; die `gateway-crew-*`-Registrationen zusätzlich vom
+  crew-Installer (`--service`-Pfad, REFERENCE.md dokumentiert `--no-service`). Kein Crew-Workflow
+  hängt daran: `crew_card.dispatcher_state()` prüft `base_home()` = Host-Gateway (läuft).
+- **Normalisiert (2026-10-28):** `/opt/data/profiles/<p>/gateway_state.json` =
+  `{"gateway_state":"stopped","desired_state":"stopped"}` in allen 6 benannten Profilen, damit der
+  Reconciler die Slots dauerhaft down lässt. Die Upstream-Wortwahl („Do not build new setups on it",
+  L2-10) und Pitfall #88521 betreffen *laufende* Profil-Gateways bzw. das `gateway.standalone`-
+  Shim — beides hier nicht im Einsatz.
+- **Verzögerte Verifikation:** nach dem nächsten regulären Pod-Neustart `ps`/`s6-svstat` erneut —
+  die 6 Slots müssen down bleiben (s6-svstat fehlt übrigens im Image; ps ist der Beweis).
 
 ### 4.3 Was wir NICHT tun sollten
 
@@ -162,8 +170,9 @@ die überhaupt trennen wollen.
   (#136018) sind ungeprüfte Einzelfall-Reports → vor Cron-Umbau verifizieren.
 - **Memory-Design je Profil** (Hindsight-Banks) ist bewusst ausgeklammert — steht seit
   2026-10-23 unter Konzept-Vorbehalt (Fleet-Regel, nicht Rechercheergebnis).
-- Die 8-Gateway-Topologie stammt aus *unserem* Suite-Image; die Upstream-Kritik ist
-  dokumentiert, aber ein Last-/Kollisions-Test auf unserem Pod wurde nicht durchgeführt.
+- Gateway-Topologie: die frühere „8 laufende Gateways"-Aussage war ein Irrtum (Registrierung durch
+  den Boot-Reconciler ≠ laufender Prozess; siehe §4.2). Restunsicherheit ist nur das
+  Reconciler-Verhalten nach dem nächsten Pod-Neustart (verzögerte Verifikation; kein Lasttest).
 - `model_overrides` in den crew-Configs ist Plugin-Vokabular, kein dokumentierter
   Core-Konfig-Key (L4 #16).
 
