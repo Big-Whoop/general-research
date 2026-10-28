@@ -53,21 +53,33 @@ which workload split, not just "make more profiles".
 ## Coverage table (sub-questions)
 | # | sub-question | best tier | ≥2 sources | workarounds searched | lane verdicts | status |
 |---|---|---|---|---|---|---|
-| SQ1 | What a profile isolates/shares + lifecycle (create/clone/export); documented purpose | — | — | — | — | OPEN |
-| SQ2 | Official best-practice statements: when to split off default; documented hazards of everything-on-default | — | — | — | — | OPEN |
-| SQ3 | Mechanism boundaries: profile vs Bot Mode vs delegate_task vs cron vs kanban vs MoA — who owns which workload | — | — | — | — | OPEN |
-| SQ4 | Per-profile equipping: toolsets, model/provider, skills, MCP, plugins, SOUL, approvals; docs guidance on minimal per-role surface | — | — | — | — | OPEN |
-| SQ5 | Community/practice: real multi-profile fleets, role splits, pitfalls (parity drift, cron dupes, routing) | — | — | — | — | OPEN |
-| SQ6 | Target architecture for OUR fleet (orchestrator synthesis from SQ1–5 + local inventory) | — | — | — | — | OPEN |
+| SQ1 | What a profile isolates/shares + lifecycle (create/clone/export); documented purpose | Verified (official docs, 10 pages) | yes (profiles page + FAQ + configuration + dev-guide multiplexing) | yes (empty stub, home_mode, clone guards) | answered | RESOLVED |
+| SQ2 | Official best-practice statements: when to split off default; documented hazards of everything-on-default | Verified (incl. verified silence) | yes (docs + FAQ + 5 corroborating issues) | yes (absence table: tips=0 hits, no best-practices page) | answered | RESOLVED |
+| SQ3 | Mechanism boundaries: profile vs Bot Mode vs delegate_task vs cron vs kanban vs MoA | Verified (12 pages whole) | yes (kanban/delegation/cron/bot-mode pages cross-corroborate) | yes (no single comparison page = absence recorded) | answered | RESOLVED |
+| SQ4 | Per-profile equipping: toolsets, model, skills, MCP, plugins, SOUL, approvals; minimal per-role surface | Verified (docs + llms-full corpus) | yes (toolsets-reference, skills, cron, kanban, plugins pages) | yes (no "minimal specialist checklist" = absence recorded) | answered | RESOLVED |
+| SQ5 | Community/practice: real multi-profile fleets, role splits, pitfalls | Verified (1 maintainer PR) + Plausible (user reports) | yes for patterns (≥3 independent reports per pattern); pitfalls single-issue each (flagged) | yes (registry ecosystem, CLI-delegation workaround; GitHub Discussions 410 = absence) | answered | RESOLVED |
+| SQ6 | Target architecture for OUR fleet (orchestrator synthesis from SQ1–5 + local inventory) | synthesis over Verified rows | n/a | n/a | orchestrator | RESOLVED (REPORT.md) |
 
 ## Source universe checklist
-- [ ] Official docs (user-guide + reference + guides) — L1–L4
-- [ ] Developer-guide internals (multiplexing-gateway, config-backend) — L1/L4
-- [ ] GitHub issues/discussions (NousResearch/hermes-agent) — L5
-- [ ] Community: Reddit / HN / X / blogs — L5
-- [ ] Official user-stories page (community evidence hosted by vendor) — L5
-- [ ] Source code — last-resort only (docs-first gate)
-- [x] Local config probe of our own deployment — done by orchestrator 2026-10-28 (environment block above)
+- [x] Official docs (user-guide + reference + guides) — L1–L4
+- [x] Developer-guide internals (multiplexing-gateway, config-backend) — L1
+- [x] GitHub issues/discussions (NousResearch/hermes-agent) — L5 (Discussions disabled 410, absence recorded), L2 (issues)
+- [x] Community: Reddit / HN / X / blogs — L5 (Reddit via user-stories quotes + search snippets; X via user-stories tiles; native search unavailable, recorded)
+- [x] Official user-stories page (community evidence hosted by vendor) — L5
+- [x] Source code — NOT needed (docs-first gate held; no lane fell back to code)
+- [x] Local config probe of our own deployment — orchestrator, 2026-10-28 (+ addendum below)
 
 ## Rounds
-Round 1: 5 lanes dispatched 2026-10-28 (docs×4 + community×1), per coverage table.
+Round 1: 5 lanes dispatched 2026-10-28 (docs×4 + community×1) — all completed with full lane files,
+status lines, and "Searched, found nothing" sections.
+Round 2: **not needed** — Step-2b audit found no OPEN/PARTIAL row; stop rule satisfied.
+
+## Local addendum (orchestrator probe, post-lane, 2026-10-28)
+- s6 services in the pod: gateway-default, gateway-worker, gateway-reviewer, and one gateway per
+  crew-* profile (8 gateway processes total) — i.e. one-gateway-per-profile inside a single
+  container, alongside `gateway.multiplex_profiles: true`. Upstream position: multiplexed host
+  gateway is the supported container topology; per-profile gateways are a refused/temporary-shim
+  topology (docs bestpractice L2-10) and a documented single-container pitfall (community
+  lane5 F28, issue #88521). Crew profiles carry own slack platform sections; worker/reviewer
+  gateways are idle (no platforms).
+- crew-* configs have no `gateway.standalone` key; kanban.default_assignee=worker present in crew configs.
