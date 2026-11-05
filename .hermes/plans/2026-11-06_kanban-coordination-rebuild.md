@@ -43,14 +43,16 @@ Neue §Card rules (aus Lanes 1/3/4 + Crew-Probelauf abgeleitet):
 Verify: `skill_view` zeigt v3.0.0; SKILL.md < 40 KB; `grep -c board-watch SKILL.md` = 0 außerhalb der Notfall-Referenz.
 
 ### Phase 2 — Wake-Kanal statt Watcher (1 Karte, config + Probe)
-- Prüfen, dass `kanban.auto_subscribe_on_create: true` (Default) greift: Desktop-Session, die `kanban_create` ruft, bekommt `notify+wake`.
-- Telegram als Zweitkanal: `/kanban create` aus dem Telegram-Chat oder `kanban_notify-subscribe` auf die Feature-Root-Karte, damit Events auch bei geschlossenem Desktop ankommen (Toasts werden nicht nachgeliefert).
-- Live-Probe mit einer Dummy-Karte: `blocked(needs_input)` → kommt der Wake im Chat an? `review_requested` → ja/nein? `block_loop_detected` → bekannt still (Upstream #82597) → als Known gap akzeptieren, Reviewer-Karte deckt es ab.
-- Verify: drei Events, drei Wakes im Desktop-Chat, mindestens `blocked` + `completed` auf Telegram.
+- Kanal = **nur der Haupt-Desktop-Chat** (Peter 2026-11-06: kein Telegram, außer explizit gefordert).
+- Prüfen, dass `kanban.auto_subscribe_on_create: true` (Default) greift: die Desktop-Session, die `kanban_create` ruft, bekommt `notify+wake`.
+- Bekannte Lücke: Wakes/Toasts bei geschlossener App werden nicht nachgeliefert → der erste Turn nach dem Öffnen macht ein read-only `kanban list` als Nachholung (Skill-Regel).
+- Live-Probe mit einer Dummy-Karte: `blocked(needs_input)` → Wake im Chat? `review_requested` → ja/nein? `block_loop_detected` → bekannt still (Upstream #82597) → Known gap, Reviewer-Karte deckt es ab.
+- Verify: zwei Events (`blocked`, `completed`), zwei Wakes im Desktop-Chat.
 
 ### Phase 3 — Profil-Ausstattung (1 Karte, config)
-- **worker**: Modell bleibt Opus (User-Entscheidung Qualität); `platform_toolsets.cli` um `clarify`, `cronjob`, `delegation`, `memory` kürzen (Doku: Worker darf nicht fragen, nicht planen, nicht delegieren; Delegation-Kinder erben `HERMES_KANBAN_TASK`, Upstream #103883). `agent.max_turns` 150 → 100.
-- **reviewer**: anderes Modell als worker (Vier-Augen; Kandidaten aus CPA: `claude-fable-5-1` oder `gpt-6.1-sol`); `platform_toolsets.cli` ohne `cronjob`, `delegation`, `clarify`; Terminal bleibt (Tests laufen).
+- **Modelle (Peter 2026-11-06, umgesetzt am selben Tag, Backups `*.bak-20261106-models`)**: default `claude-opus-5-5` high · worker `claude-opus-5-5` medium · reviewer `claude-fable-5-1` medium. Sonnet als Worker abgelehnt (zu schwach). Gateway-Restart für worker/reviewer-Runs nötig (Dispatcher spawnt mit der Config zum Spawn-Zeitpunkt — zu verifizieren beim ersten Run).
+- **worker**: `platform_toolsets.cli` um `clarify`, `cronjob`, `delegation`, `memory` kürzen (Doku: Worker darf nicht fragen, nicht planen, nicht delegieren; Delegation-Kinder erben `HERMES_KANBAN_TASK`, Upstream #103883). `agent.max_turns` 150 → 100 (offen).
+- **reviewer**: `platform_toolsets.cli` ohne `cronjob`, `delegation`, `clarify`; Terminal bleibt (Tests laufen).
 - **Verifier**: kein neues Profil — Verifier-Karten laufen als `reviewer` mit Proof-Kommando im Body. Ein viertes Profil erst, wenn Proof-Laufzeiten den Reviewer blockieren.
 - **default**: `kanban`-Toolset bleibt explizit; keine Änderung.
 - Verify: `hermes -p worker tools list` zeigt die Kürzung; Smoke-Karte auf jedem Profil läuft durch.
@@ -78,12 +80,16 @@ PR #391 (service-toggle) als Vorlage neu schneiden, nicht mergen:
 | 4 Probelauf | 1–3 | 1 Feature | Board |
 | 5 Aufräumen | 4 | ½ h | Chat |
 
-## Offene Entscheidungen für Peter
+## Entscheidungen (Peter, 2026-11-06)
 
-1. Reviewer-Modell: `claude-fable-5-1` (günstig, im Crew-Lauf als Verifier solide) oder `gpt-6.1-sol` (anderer Hersteller, stärkeres Vier-Augen)?
-2. Telegram als Zweitkanal für Board-Events ja/nein?
-3. PR #391 schließen und neu schneiden (Phase 4) oder als Feature-Branch behalten und nur die fünf Punkte als Karten nachziehen?
-4. `worker.agent.max_turns` 150 → 100?
+1. Modelle: default opus high · worker opus medium · reviewer fable medium — umgesetzt.
+2. Kein Telegram; Nachrichtenkanal bleibt der Haupt-Chat.
+3. Drei Profile (default/worker/reviewer), kein viertes; Verifier = Karten-Art auf reviewer.
+4. Crew ist raus; Stock Kanban.
+5. PR #391 gelöscht (PR closed, Branch lokal+remote weg, Worktree + `.crew/` entfernt, Karte archiviert) — Phase 4 beginnt frisch.
+
+## Offen
+- `worker.agent.max_turns` 150 → 100?
 
 ## Risiken
 
