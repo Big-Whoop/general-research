@@ -1,6 +1,6 @@
 # Umsetzungsplan v2 — autonome Ausführung: Kanban-Koordination „Plan-first → Board, Supervision per Event"
 
-Datum: 2026-11-06 · Status: zur Freigabe · Ersetzt Phasen 0–5 des Plans vom selben Tag (Entscheidungen 1–5 bleiben gültig: Modelle gesetzt, kein Telegram, drei Profile, Stock Kanban, PR #391 gelöscht, `max_turns` bleibt 150).
+Datum: 2026-11-06 · Status: **WP1–7 umgesetzt 2026-11-06** (siehe §Ergebnis unten); WP8 wartet auf „los" · Ersetzt Phasen 0–5 des Plans vom selben Tag (Entscheidungen 1–5 bleiben gültig: Modelle gesetzt, kein Telegram, drei Profile, Stock Kanban, PR #391 gelöscht, `max_turns` bleibt 150).
 
 Ausführungsmodus nach Freigabe: **diese Chat-Session führt alle Pakete selbst aus** (Skills, Profil-Configs und Repo-Docs sind kein Code → keine Karten nötig; das ist die stehende Ausnahme der Board-Regel). Schwere Textarbeit (WP3) geht an einen `delegate_task`-Subagenten mit Datei-Output; alles andere läuft in-session. Ein Gateway-Restart ist nötig (WP5) — der Chat macht ihn selbst, sobald 0 Karten laufen, und meldet ihn. Kein Schritt berührt `main` eines Repos außer dem Skill-Backup-Commit in `general-research`.
 
@@ -118,3 +118,21 @@ Gesamt WP1–7: ~4–5 h Chat-Zeit; der Chat meldet sich nach WP3 (Umzugstabelle
 - Toolset-Kürzung am worker bricht alte Karten-Bodies, die `delegate_task` verlangten → WP6 deckt es; betroffene Bodies werden beim Neuschnitt ohnehin neu geschrieben.
 - `notify+wake` nicht exactly-once; stille `block_loop`-Events (Upstream #82597) → Wake-Turn-Protokoll beginnt immer mit `kanban list`.
 - Subagent in WP3 könnte Regeln verlieren → Umzugstabelle ist Pflicht-Output, Chat prüft jede v2-Überschrift gegen sie.
+
+---
+
+## Ergebnis (2026-11-06, autonom ausgeführt)
+
+| WP | Ergebnis | Verify |
+|---|---|---|
+| 1 | `scripts/board-probe.py` angelegt; Baseline nixos-infra: 812 Runs/302 Karten, median 2 Runs, 75 block_loop (2,48/10 Karten), 200 respawn_guarded, Karte 0,6 h median. Backups (3 Skill-Varianten + 3 MEMORY.md, 46 Dateien) in `skill-backup/kanban-v2-20261106/`, Commit 8594c0f | ✓ |
+| 2 | Reviewer-Regeln → `references/reviewer-lane.md` (Review-Reihenfolge, PR-Verdict vor Transition, Squash in feat/, Base-SHA, Verifier-PASS-Regeln, Tool-Grenzen). Worker-MEMORY war Klon der Default-MEMORY, nichts verloren | ✓ |
+| 3 | SKILL.md v3.0.0, 22,2 KB (v2: 100 KB); §Intake (≤ 2 clarify-Runden), §8 Card rules, §Wake-turn, §Rollen, §Verification; Loop → `board-watch-cron.md` (Emergency-Header), Kernel-Pitfalls → `forensics.md`; neue refs intake-planning/core-workflow/wake-triage/campaign-pitfalls; MOVE-TABLE 29/29 Überschriften | ✓ |
+| 4 | v3 in worker + reviewer, `hermes-kanban-ops` gelöscht, `diff -r` leer | ✓ |
+| 5 | Toolsets: worker ohne clarify/cronjob/delegation/memory/a2a/computer_use/image_gen/video_gen/tts/x_search; reviewer ohne browser/clarify/computer_use/cronjob/delegation/image_gen/tts, `approvals.mode: "off"` (Pitfall: unquoted `off` → YAML false). Descriptions geschärft, `description_auto: false`; SOUL.md je Profil + Rollenabsatz. Backups `*.bak-20261106-profiles`. Gateway-Restart 22:57 (pid 20060), 3 Profile served | ✓ `tools list` |
+| 6 | 4 Smoke-Karten auf kanban-tools: worker→reviewer-Kette (PR #14, approved, nicht gemergt) · Block/Wake (genau 1 needs_input, Unblock → PR #15) · Verifier (korrektes FAIL mit zitiertem Output) · Wake via natives `kanban_create` (Event kam als Chat-Turn). Modelle bestätigt: worker opus, reviewer fable. 0 block_loop, 0 clarify | ✓ |
+| 7 | Smoke-PRs geschlossen, Branches/Worktrees weg, Karten archiviert; MEMORY.md-Leichen → `/opt/data/backups/`; Hindsight retained | ✓ |
+
+**Befund aus WP6 (in Skill §Intake 6 eingetragen):** nur das native `kanban_create`-Tool subscribed den Chat für `notify+wake`; CLI `hermes kanban create` legt keine Subscription an. Intake erstellt Karten per Tool oder ruft `notify-subscribe` nach.
+
+Rollback: `*.bak-20261106-profiles` + `skill-backup/kanban-v2-20261106/` + Gateway-Restart.
