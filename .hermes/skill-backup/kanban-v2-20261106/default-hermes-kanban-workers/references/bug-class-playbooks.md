@@ -1,0 +1,17 @@
+# Bug-class playbooks: resolve the mechanism BEFORE the card
+
+Domain-specific diagnoses that recur in this fleet's repos. Each entry: the symptom the user reports, the mechanism to verify read-only before the question round, and what the card body must carry so the worker executes instead of re-diagnosing. Loaded from `hermes-kanban-workers` SKILL.md step 0 when a user report matches one of these classes.
+
+## "Grow the VMs to N GB" — a question of WHERE the size lives
+Before proposing, locate it: golden-image virtual size (build manifest `capacity`, `qemu-img`) vs the wrapper's clone step vs the VM spec. Sparse raw/COW disks already cost nothing until written, so "dynamic" is usually already true and only the ceiling moves. Recommend the wrapper growing the clone (`truncate -s` after the snapshot, size as a config property) plus guest-side growth (cloud-init growpart / `Resize-Partition` in the first-boot script) over a golden rebuild; state that existing VMs keep their size and name the pool-capacity risk (n × ceiling apparent).
+
+**Windows: check the partition ORDER before trusting `Resize-Partition`.** Windows Setup shrinks C: and appends its own WinRE recovery partition BEHIND it even when the answer file creates only EFI/MSR/C:(Extend), so `Get-PartitionSupportedSize` reports SizeMax == Size and the guarded resize is a silent no-op. Ask the user for `Get-Partition` output from an affected clone first. The fix belongs in the golden answer file (EFI, MSR, Recovery ~1 GB with WinRE type id `DE94BBA4-…`, then C: Extend, per Microsoft's UEFI/GPT sample) plus a build-time check (`reagentc /info`, C: is the last partition) — a rebuild card in the infra repo, not a wrapper change. Alternative: `reagentc /disable` → delete partition → resize → `reagentc /enable`. Merely omitting the Recovery partition from autounattend does not work — Setup recreates it. A golden clone-test cannot prove growth (`sudo truncate` is not whitelisted on the build host); the first API-created VM is the proof.
+
+## Embedded RDP (Guacamole): special characters wrong while umlauts work
+Missing `server-layout`. Guacamole defaults to `en-us-qwerty`, so keys map to US scancodes; umlauts pass because they go as Unicode events. Set the connection parameter to the guest's input locale (e.g. `de-ch-qwertz` for `InputLocale de-CH`), ideally as a config property.
+
+## "Shutdown in the guest reboots" (KubeVirt)
+`runStrategy: Always`; use `RerunOnFailure` and migrate existing VMs on their next start.
+
+## Session tabs that must close on disconnect
+An SSH WebSocket `onclose` is visible to the page, but a cross-origin Guacamole iframe is not — "detect the ended session" is impossible through it. Offer (A) embed the vendor JS client (Guacamole.Client onstatechange) as recommended, (B) same-origin route + DOM scraping, (C) server-side session polling, and keep a cheap VM/port status poll as fallback. Recommend for RDP: poll the VM status per open RDP tab (~10 s) and close on 404 / not RUNNING / port-readiness false twice in a row (network errors never close); name the accepted gap (a pure Guacamole-session drop on a running VM stays visible only as Guacamole's own error). Tell the worker to reuse an existing UI JSON endpoint or add a tiny `/ui/…` status endpoint on the existing readiness probe, not new probe logic. Closing tabs of a deleted VM can reuse the existing deleted-VM detection.
