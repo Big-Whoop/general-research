@@ -108,6 +108,20 @@ Vier-Augen-Prinzip (User-Präferenz: verschiedene Modelle je Rolle) passt in A u
 
 ---
 
+## 6b. Crew-Probelauf 2026-11-04/05 (lokale Evidenz, Verified aus Session-Transkripten)
+
+Ein Auftrag (k8s-Service-Toggle-UI in nixos-infra, Karte `t_e4e351e5`), Worker Opus, Verifier Fable. Ergebnis PR #391 (27 Dateien, +1360/−9, 5 Commits, CI grün) — fachlich gut, vom Owner aber als Fehlschlag gewertet; Plugin + 4 Rollenprofile am 2026-11-05 entfernt.
+
+| Befund | Zahl | Was es über das Modell sagt |
+|---|---|---|
+| Laufzeit bis PR | 88 min, 5 Runs | Zwei Runs am Iterationslimit (60), einer am Token-Budget (1,51 M/1,5 M) — Budgets haben gestoppt, nicht gesteuert |
+| Erster Run | 54 min, **null Commits**, nur untracked Draft | Ohne „nach jedem Schritt pushen" im Vertrag verschwindet Arbeit beim Budget-Stop; der Board-Koordinator hat das erst nach dem Stall nachgeschoben |
+| Koordinator-Entscheidung | „replicas aus Git streichen" — falsch; Worker hat mit richtiger Begründung (Flux-SSA-Ownership) abgelehnt | Design-Entscheidungen *im Tick* ohne Mensch sind fehleranfällig; das Ergebnis stimmte wegen des Workers, nicht des Systems |
+| Verifier | 4 min, ~14 k Output, Proof prüfte nur Form (PR offen, CI grün, Design-Doc da) | „Done when" ohne Funktionsnachweis macht den Verifier wertlos — ein Intake-Fehler, kein Rollen-Fehler |
+| Worker-Kosten | ~420 k Output, ~17 M Cache-Reads | Eine Karte für ein 27-Dateien-Feature ist genau die Kartengröße, die Community (D2) und Claude-Code-Doku als Kollaps-Ursache nennen |
+
+**Einordnung gegen die Optionsmatrix:** Der Probelauf ist ein Datenpunkt für **Modell B ohne Plan-Phase**: Intake ≤ 5 Fragen, dann eine große Karte, Entscheidungen im Tick. Genau die drei Schwächen, die die Industrie-Lanes für B voraussagen (Koordinator-Kontext als Flaschenhals, Design-Drift, flacher Verifier), sind eingetreten. Die Stärken von B (Budget-Stop, unabhängiger Proof, Owner nur bei Fragen) haben funktioniert, waren aber ohne Plan-Artefakt und Kartenschnitt zu wenig. Das bestätigt die Empfehlung A + B-Mechanik — und schließt Crew als Produkt aus, nicht seine Mechanik.
+
 ## 7. Known gaps
 
 - **Kein veröffentlichter Messwert „asynchrones Board vs. Chat"** — weder in der Hermes-Doku (nur qualitativ, L2 §C) noch in Papers (Kim et al. messen Debatte/Orchestrator, kein Board). Der einzige On-Target-Wert ist #90853 (Chat-Koordinator, der wartet). Unsere lokale Probe liefert Board-Zahlen (Run 4,3 min median, Karte 0,6 h median), aber keinen kontrollierten Vergleich mit derselben Aufgabe im Chat.
